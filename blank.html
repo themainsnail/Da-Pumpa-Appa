@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no">
+<link rel="apple-touch-icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAACrUlEQVR4nO3dwVEbQRBAUeFyCHb54BTIidick7MgCV8prG8kWcz2wHs3iou66++sEAg9fPvx8wTnfDn6ATCXOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEhfj34A5/3+9f3ll49Pz0c9kvczf8aHaZ9l/2plLw1c3212mXHWbeUfW3vzu7vYaMZBcVyyl1G7u8FeM06J4/KNzNndtbabcUocDDQijmsvlCEX1lV2nHFEHMx0wOsc83++n+PYXS19neOOR+V2Se04+7rbyoSb6MewbJOL4lDGfa3ZpyekpBVxODbew4KtOjlI4iCJgyQOkjhI4iCJgyQOkjhI4iANfd/Km7wkv4CTgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQO0q6/sv/M77JfxslBEgdJHCRxkMRBEgdJHCRxkMRBEgdpRRzbvdS9hQVbdXKQFsXh8LivNftcd3Lo414+4P8+P51Oj0/Pfw8mmnJ2VyvXdcDfc6jhcsfuyhNS0og4rr0+djx7dpxxRBzMNCWOyy+UCZfUbbabcUocp8s2MmRrN9trxkFxnN7ay5yt/Y+NZlz6AYCX+wyfIDl/xqFxMMGs2wqjiIMkDpI4SOIgiYMkDpI4SOIgiYMkDpI4SOIgiYMkDpI4SOIgiYMkDpI4SOIgiYMkDpI4SOIgiYMkDpI4SOIgiYMkDpI4SOIgiYMkDpI4SOIgiYMkDpI4SOIgiYMkDpI4SOIgiYMkDpI4SOIgiYMkDpI4SOIgiYMkDpI4SOIg/QEpmnMGnzCf0wAAAABJRU5ErkJggg==">
+<link rel="icon" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALQAAAC0CAIAAACyr5FlAAACrUlEQVR4nO3dwVEbQRBAUeFyCHb54BTIidick7MgCV8prG8kWcz2wHs3iou66++sEAg9fPvx8wTnfDn6ATCXOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEjiIImDJA6SOEhfj34A5/3+9f3ll49Pz0c9kvczf8aHaZ9l/2plLw1c3212mXHWbeUfW3vzu7vYaMZBcVyyl1G7u8FeM06J4/KNzNndtbabcUocDDQijmsvlCEX1lV2nHFEHMx0wOsc83++n+PYXS19neOOR+V2Se04+7rbyoSb6MewbJOL4lDGfa3ZpyekpBVxODbew4KtOjlI4iCJgyQOkjhI4iCJgyQOkjhI4iANfd/Km7wkv4CTgyQOkjhI4iCJgyQOkjhI4iCJgyQOkjhI4iCJgyQO0q6/sv/M77JfxslBEgdJHCRxkMRBEgdJHCRxkMRBEgdpRRzbvdS9hQVbdXKQFsXh8LivNftcd3Lo414+4P8+P51Oj0/Pfw8mmnJ2VyvXdcDfc6jhcsfuyhNS0og4rr0+djx7dpxxRBzMNCWOyy+UCZfUbbabcUocp8s2MmRrN9trxkFxnN7ay5yt/Y+NZlz6AYCX+wyfIDl/xqFxMMGs2wqjiIMkDpI4SOIgiYMkDpI4SOIgiYMkDpI4SOIgiYMkDpI4SOIgiYMkDpI4SOIgiYMkDpI4SOIgiYMkDpI4SOIgiYMkDpI4SOIgiYMkDpI4SOIgiYMkDpI4SOIgiYMkDpI4SOIgiYMkDpI4SOIgiYMkDpI4SOIgiYMkDpI4SOIg/QEpmnMGnzCf0wAAAABJRU5ErkJggg==">
+<title>Lift Log</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #14171b;
+    --panel: #1d2127;
+    --panel-raised: #262b33;
+    --line: #333944;
+    --text: #edeef0;
+    --text-dim: #9aa1ab;
+    --amber: #e8b830;
+    --amber-dim: #7a6323;
+    --amber-bg: #2e260f;
+    --red: #c1443b;
+    --green: #5fa878;
+    --radius: 10px;
+  }
+  *{ box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html,body{ margin:0; padding:0; background:var(--bg); color:var(--text);
+    font-family:'Inter',system-ui,sans-serif; -webkit-font-smoothing:antialiased; }
+  body{ padding-bottom: 92px; min-height:100vh; }
+  h1,h2,h3{ font-family:'Barlow Condensed', sans-serif; font-weight:700; margin:0; letter-spacing:.02em; }
+
+  .topnav{ position:sticky; top:0; z-index:20; background:var(--bg); }
+  header{ border-bottom:1px solid var(--line); padding:16px 16px 12px; display:flex;
+    align-items:center; justify-content:center; position:relative; }
+  header h1{ font-size:24px; color:var(--amber); line-height:1; text-align:center; }
+  header .sub{ font-size:11px; color:var(--text-dim); margin-top:2px; letter-spacing:.03em; text-align:center; cursor:pointer; }
+  .gear{ position:absolute; right:16px; top:50%; transform:translateY(-50%); background:none; border:1px solid var(--line); color:var(--text-dim);
+    width:38px; height:38px; border-radius:50%; font-size:17px; display:flex;
+    align-items:center; justify-content:center; flex-shrink:0; }
+
+  .tabs{ display:flex; gap:8px; padding:14px 16px 4px; overflow-x:auto; }
+  .tabs.sub{ padding-top:2px; padding-bottom:10px; border-bottom:1px solid var(--line); }
+  .tab{ flex:0 0 auto; text-align:center; padding:10px 14px; border-radius:var(--radius);
+    background:var(--panel); border:1px solid var(--line); color:var(--text-dim);
+    font-family:'Barlow Condensed',sans-serif; font-size:16px; font-weight:700;
+    letter-spacing:.03em; white-space:nowrap; }
+  .tab.active{ background:var(--amber); color:#1a1400; border-color:var(--amber); }
+  .tab.sub-tab{ padding:8px 13px; font-size:14px; background:var(--panel-raised); }
+  .tab.sub-tab.active{ background:var(--amber); color:#1a1400; border-color:var(--amber); }
+  .tab.add-tab{ background:none; border-style:dashed; color:var(--text-dim); font-weight:600; }
+
+  main{ padding:16px; display:flex; flex-direction:column; gap:12px; }
+
+  .empty-hint{ background:var(--panel); border:1px dashed var(--line); border-radius:var(--radius);
+    padding:22px 18px; text-align:center; color:var(--text-dim); font-size:14px; line-height:1.6; }
+
+  .exercise{ background:var(--panel); border:1px solid var(--line); border-radius:var(--radius); overflow:hidden; }
+  .ex-head{ display:flex; align-items:center; justify-content:space-between; padding:12px 14px 4px; }
+  .ex-name{ font-size:19px; font-family:'Barlow Condensed',sans-serif; font-weight:700; }
+  .ex-remove{ background:none; border:none; color:var(--text-dim); font-size:13px; padding:4px 6px; }
+
+  .target-row{ display:flex; align-items:center; gap:6px; padding:2px 14px 10px; flex-wrap:wrap; }
+  .target-row .lbl{ font-size:12px; color:var(--text-dim); }
+  .target-row input{ background:var(--panel-raised); border:1px solid var(--line); color:var(--text);
+    border-radius:6px; padding:5px 6px; font-size:13px; text-align:center; }
+  .target-row .sets-input{ width:34px; }
+  .target-row .reps-input{ width:56px; }
+
+  .max-box{ margin:0 14px 12px; background:var(--amber-bg); border:1px solid var(--amber-dim);
+    border-radius:8px; padding:10px 12px; display:flex; align-items:center; gap:10px; }
+  .max-box .lbl{ font-size:11px; color:var(--amber); font-family:'Barlow Condensed',sans-serif;
+    font-weight:700; letter-spacing:.03em; white-space:nowrap; }
+  .max-box .field{ display:flex; align-items:center; background:#1a1608; border:1px solid var(--amber-dim);
+    border-radius:6px; overflow:hidden; flex:1; }
+  .max-box .field input{ width:100%; min-width:0; background:none; border:none; color:var(--amber);
+    font-size:16px; padding:7px 4px; text-align:center; font-weight:700; font-variant-numeric:tabular-nums; }
+  .max-box .field input:focus{ outline:none; }
+  .max-box .field .unit{ font-size:10px; color:var(--amber-dim); padding-right:6px; }
+  .max-box .x{ color:var(--amber-dim); font-size:14px; }
+
+  .set-row{ display:grid; grid-template-columns: 34px 1fr 1fr 30px; gap:8px; align-items:center;
+    padding:6px 14px; }
+  .set-label{ color:var(--text-dim); font-size:13px; font-family:'Barlow Condensed',sans-serif; font-weight:700; }
+  .field{ display:flex; align-items:center; background:var(--panel-raised); border:1px solid var(--line);
+    border-radius:8px; overflow:hidden; }
+  .field input{ width:100%; min-width:0; background:none; border:none; color:var(--text);
+    font-size:17px; padding:9px 6px; text-align:center; font-variant-numeric:tabular-nums; }
+  .field input:focus{ outline:none; }
+  .field .unit{ font-size:11px; color:var(--text-dim); padding-right:8px; white-space:nowrap; }
+  .set-del{ background:none; border:none; color:var(--text-dim); font-size:16px; padding:4px; }
+
+  .add-set{ display:block; width:calc(100% - 28px); margin:8px 14px 14px; padding:9px;
+    background:none; border:1px dashed var(--line); border-radius:8px; color:var(--text-dim);
+    font-size:13px; font-family:'Inter'; }
+
+  .add-exercise{ background:var(--panel); border:1px dashed var(--line); border-radius:var(--radius);
+    padding:14px; color:var(--text-dim); font-size:15px; text-align:center; }
+  .add-exercise input{ width:100%; background:var(--panel-raised); border:1px solid var(--line);
+    color:var(--text); border-radius:8px; padding:10px; font-size:15px; margin-top:8px; text-align:center; }
+
+  footer{ position:fixed; bottom:0; left:0; right:0; padding:12px 16px calc(12px + env(safe-area-inset-bottom));
+    background:linear-gradient(to top, var(--bg) 60%, transparent); z-index:20; }
+  .log-btn{ width:100%; padding:15px; background:var(--amber); color:#1a1400; border:none;
+    border-radius:var(--radius); font-family:'Barlow Condensed',sans-serif; font-size:20px;
+    font-weight:700; letter-spacing:.03em; }
+  .log-btn:disabled{ background:var(--panel-raised); color:var(--text-dim); }
+  .status{ text-align:center; font-size:12px; color:var(--text-dim); margin-top:8px; min-height:16px; }
+  .status.ok{ color:var(--green); }
+  .status.err{ color:var(--red); }
+
+  .sheet{ position:fixed; inset:0; background:rgba(0,0,0,.55); z-index:50; display:flex;
+    align-items:flex-end; opacity:0; pointer-events:none; transition:opacity .18s; }
+  .sheet.open{ opacity:1; pointer-events:auto; }
+  .sheet-panel{ background:var(--panel); width:100%; border-radius:16px 16px 0 0; padding:20px 18px calc(20px + env(safe-area-inset-bottom));
+    max-height:85vh; overflow-y:auto; transform:translateY(100%); transition:transform .2s; }
+  .sheet.open .sheet-panel{ transform:translateY(0); }
+  .sheet h2{ font-size:22px; margin-bottom:4px; }
+  .sheet .hint{ color:var(--text-dim); font-size:13px; line-height:1.5; margin-bottom:14px; }
+  .sheet label{ display:block; font-size:12px; color:var(--text-dim); margin:14px 0 6px; }
+  .sheet input{ width:100%; background:var(--panel-raised); border:1px solid var(--line);
+    color:var(--text); border-radius:8px; padding:11px; font-size:15px; }
+  .unit-toggle{ display:flex; gap:8px; }
+  .unit-toggle button{ flex:1; padding:10px; border-radius:8px; border:1px solid var(--line);
+    background:var(--panel-raised); color:var(--text-dim); font-weight:600; }
+  .unit-toggle button.active{ background:var(--amber); color:#1a1400; border-color:var(--amber); }
+  .sheet-close{ width:100%; margin-top:20px; padding:13px; background:var(--panel-raised);
+    border:1px solid var(--line); border-radius:10px; color:var(--text); font-weight:600; }
+  .tab-block{ margin-top:6px; background:var(--panel-raised); border:1px solid var(--line); border-radius:10px; padding:12px; }
+  .tab-block-head{ display:flex; align-items:center; justify-content:space-between; margin-bottom:8px; }
+  .tab-block-head .name{ font-size:16px; font-family:'Barlow Condensed',sans-serif; font-weight:700; }
+  .tab-block-head .actions{ display:flex; gap:10px; }
+  .tab-block-head .actions button{ background:none; border:none; color:var(--text-dim); font-size:12px; }
+  .day-manage{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:8px; }
+  .day-chip{ padding:6px 10px; border-radius:20px; background:var(--panel); border:1px solid var(--line);
+    color:var(--text-dim); font-size:12px; display:flex; align-items:center; gap:6px; }
+  .day-chip button{ background:none; border:none; color:var(--red); font-size:13px; padding:0; }
+  .add-day-row{ display:flex; gap:6px; }
+  .add-day-row input{ flex:1; }
+  .add-day-row button{ flex:0 0 auto; padding:0 14px; background:var(--amber-dim); border:none; border-radius:8px; color:var(--text); font-weight:600; }
+  .add-tab-row{ display:flex; gap:6px; margin-top:10px; }
+  .add-tab-row input{ flex:1; }
+  .add-tab-row button{ flex:0 0 auto; padding:0 16px; background:var(--amber); border:none; border-radius:8px; color:#1a1400; font-weight:700; }
+  .export-btn{ width:100%; padding:12px; margin-top:8px; background:var(--panel-raised); border:1px solid var(--line);
+    border-radius:8px; color:var(--text); font-weight:600; font-size:14px; text-align:left; display:flex;
+    align-items:center; justify-content:space-between; }
+  .export-btn .count{ color:var(--text-dim); font-weight:400; font-size:12px; }
+  .export-note{ font-size:12px; color:var(--text-dim); line-height:1.5; margin-top:10px; }
+  .swatch-row{ display:flex; flex-wrap:wrap; gap:10px; }
+  .swatch{ width:36px; height:36px; border-radius:50%; border:2px solid transparent; padding:0; }
+  .swatch.active{ border-color:var(--text); }
+  .custom-color-row{ display:flex; align-items:center; gap:10px; margin-top:10px; }
+  .custom-color-row input[type="color"]{ width:44px; height:36px; padding:2px; border-radius:8px; }
+  .custom-color-row .lbl{ font-size:13px; color:var(--text-dim); }
+</style>
+</head>
+<body>
+
+<div class="topnav">
+  <header>
+    <div>
+      <h1 id="appTitle" onclick="renameApp()">Lift Log</h1>
+      <div class="sub">Tap the title to rename this app</div>
+    </div>
+    <button class="gear" onclick="openSettings()">⚙</button>
+  </header>
+</div>
+
+<div class="tabs" id="tabs"></div>
+<div class="tabs sub" id="subTabs" style="display:none;"></div>
+
+<main id="main"></main>
+
+<footer>
+  <button class="log-btn" id="logBtn" onclick="submitCurrent()">Log</button>
+  <div class="status" id="status"></div>
+</footer>
+
+<div class="sheet" id="settingsSheet">
+  <div class="sheet-panel">
+    <h2>Settings</h2>
+    <div class="hint">Everything logged here saves right on this device. Export it as a CSV whenever you want it in Google Sheets or Excel.</div>
+
+    <label>Accent color</label>
+    <div class="swatch-row" id="swatchRow"></div>
+    <div class="custom-color-row">
+      <input type="color" id="customColorInput">
+      <span class="lbl">Pick a custom color</span>
+    </div>
+
+    <label>Weight unit</label>
+    <div class="unit-toggle">
+      <button id="unitLb" onclick="setUnit('lb')">lb</button>
+      <button id="unitKg" onclick="setUnit('kg')">kg</button>
+    </div>
+
+    <label>Export your data</label>
+    <button class="export-btn" onclick="exportCSV()">All logged entries <span class="count" id="countAll"></span></button>
+    <div class="export-note" id="exportNote"></div>
+
+    <label>Tabs</label>
+    <div id="tabBlocks"></div>
+    <div class="add-tab-row">
+      <input id="newTabInput" placeholder="New tab name">
+      <button onclick="addTabFromSettings()">Add tab</button>
+    </div>
+
+    <button class="sheet-close" onclick="saveSettings()">Done</button>
+  </div>
+</div>
+
+<script>
+function uid(){ return Date.now().toString(36) + Math.random().toString(36).slice(2,7); }
+function blankMeta(){ return { sets:"", reps:"", maxWeight:"", maxReps:"" }; }
+
+let state = {
+  appTitle: "Lift Log",
+  accentColor: "#e8b830",
+  tabs: [ { id: uid(), name: "Tab 1", subTabs: [] } ],
+  activeTabId: null,
+  activeSubId: {},     // { tabId: subId or null }
+  unit: "lb",
+  exercisesByLeaf: {},  // { leafKey: [ {id, name, sets, reps, maxWeight, maxReps} ] }
+  draft: {}             // { exerciseId: [{weight,reps}, ...] }
+};
+state.activeTabId = state.tabs[0].id;
+
+const ACCENT_SWATCHES = ["#e8b830", "#5b8fc7", "#5fa878", "#c1443b", "#a675d1", "#e07b39", "#4fb5c9", "#e0619a"];
+
+function hexToRgb(hex){
+  hex = hex.replace('#','');
+  if(hex.length === 3) hex = hex.split('').map(c=>c+c).join('');
+  const n = parseInt(hex, 16);
+  return { r: (n>>16)&255, g: (n>>8)&255, b: n&255 };
+}
+function rgbToHex(r,g,b){
+  return '#' + [r,g,b].map(v => Math.max(0,Math.min(255,Math.round(v))).toString(16).padStart(2,'0')).join('');
+}
+function shade(hex, factor){
+  const {r,g,b} = hexToRgb(hex);
+  return rgbToHex(r*factor, g*factor, b*factor);
+}
+function applyTheme(){
+  const root = document.documentElement.style;
+  root.setProperty('--amber', state.accentColor);
+  root.setProperty('--amber-dim', shade(state.accentColor, 0.55));
+  root.setProperty('--amber-bg', shade(state.accentColor, 0.14));
+}
+
+let downloadsCap = null;
+
+function lsGet(key){ try{ const v = localStorage.getItem(key); return v ? JSON.parse(v) : null; }catch(e){ return null; } }
+function lsSet(key, value){ try{ localStorage.setItem(key, JSON.stringify(value)); }catch(e){} }
+
+function loadState(){
+  const cfg = lsGet('liftlog:config');
+  if(cfg){
+    state.appTitle = cfg.appTitle || state.appTitle;
+    state.accentColor = cfg.accentColor || state.accentColor;
+    if(cfg.tabs && cfg.tabs.length) state.tabs = cfg.tabs;
+    state.activeTabId = cfg.activeTabId || state.tabs[0].id;
+    state.activeSubId = cfg.activeSubId || {};
+    state.unit = cfg.unit || state.unit;
+    if(cfg.exercisesByLeaf) state.exercisesByLeaf = cfg.exercisesByLeaf;
+  }
+  const draft = lsGet('liftlog:draft');
+  if(draft) state.draft = draft;
+}
+function saveConfig(){
+  lsSet('liftlog:config', {
+    appTitle: state.appTitle, accentColor: state.accentColor, tabs: state.tabs, activeTabId: state.activeTabId,
+    activeSubId: state.activeSubId, unit: state.unit, exercisesByLeaf: state.exercisesByLeaf
+  });
+}
+function saveDraft(){ lsSet('liftlog:draft', state.draft); }
+function getHistory(){ return lsGet('liftlog:history') || []; }
+function appendHistory(entry){
+  let h = getHistory();
+  h.push(entry);
+  if(h.length > 1000) h = h.slice(h.length - 1000);
+  lsSet('liftlog:history', h);
+}
+
+function activeTab(){ return state.tabs.find(t => t.id === state.activeTabId) || state.tabs[0]; }
+function activeSubId(){ return state.activeSubId[state.activeTabId] || null; }
+function leafKey(){
+  const sub = activeSubId();
+  return sub ? state.activeTabId + '::' + sub : state.activeTabId;
+}
+function leafLabel(){
+  const t = activeTab();
+  const sub = activeSubId();
+  if(!sub) return t.name;
+  const s = t.subTabs.find(x => x.id === sub);
+  return t.name + ' – ' + (s ? s.name : '');
+}
+function ensureLeaf(key){ if(!state.exercisesByLeaf[key]) state.exercisesByLeaf[key] = []; }
+function ensureDraftFor(exList){
+  exList.forEach(ex=>{ if(!state.draft[ex.id]) state.draft[ex.id] = [{weight:"", reps:""}]; });
+}
+
+function renameApp(){
+  const val = prompt("App name:", state.appTitle);
+  if(val && val.trim()){ state.appTitle = val.trim(); saveConfig(); render(); }
+}
+
+function renderTabs(){
+  const tabs = document.getElementById('tabs');
+  tabs.innerHTML = "";
+  state.tabs.forEach(t=>{
+    const b = document.createElement('button');
+    b.className = 'tab' + (t.id === state.activeTabId ? ' active' : '');
+    b.textContent = t.name;
+    b.onclick = ()=>{ state.activeTabId = t.id; ensureLeaf(leafKey()); render(); saveConfig(); };
+    tabs.appendChild(b);
+  });
+  const addBtn = document.createElement('button');
+  addBtn.className = 'tab add-tab';
+  addBtn.textContent = '+ tab';
+  addBtn.onclick = ()=>{
+    const val = prompt("Name this tab:", "");
+    if(val && val.trim()){
+      const t = { id: uid(), name: val.trim(), subTabs: [] };
+      state.tabs.push(t);
+      state.activeTabId = t.id;
+      ensureLeaf(leafKey());
+      saveConfig(); render();
+    }
+  };
+  tabs.appendChild(addBtn);
+
+  const subTabs = document.getElementById('subTabs');
+  const t = activeTab();
+  subTabs.innerHTML = "";
+  subTabs.style.display = 'flex';
+  (t.subTabs || []).forEach(s=>{
+    const b = document.createElement('button');
+    b.className = 'tab sub-tab' + (s.id === activeSubId() ? ' active' : '');
+    b.textContent = s.name;
+    b.onclick = ()=>{ state.activeSubId[t.id] = s.id; ensureLeaf(leafKey()); render(); saveConfig(); };
+    subTabs.appendChild(b);
+  });
+  const addSubBtn = document.createElement('button');
+  addSubBtn.className = 'tab sub-tab add-tab';
+  addSubBtn.textContent = '+ sub-tab';
+  addSubBtn.onclick = ()=>{
+    const val = prompt('Name this sub-tab (e.g. "' + t.name + ' 1"):', "");
+    if(val && val.trim()){
+      const s = { id: uid(), name: val.trim() };
+      t.subTabs.push(s);
+      state.activeSubId[t.id] = s.id;
+      ensureLeaf(leafKey());
+      saveConfig(); render();
+    }
+  };
+  subTabs.appendChild(addSubBtn);
+}
+
+function renderMain(){
+  const main = document.getElementById('main');
+  main.innerHTML = "";
+  const key = leafKey();
+  ensureLeaf(key);
+  const exList = state.exercisesByLeaf[key];
+  ensureDraftFor(exList);
+
+  if(exList.length === 0){
+    const hint = document.createElement('div');
+    hint.className = 'empty-hint';
+    hint.textContent = "Nothing here yet — add an exercise below to start tracking " + leafLabel() + ".";
+    main.appendChild(hint);
+  }
+
+  exList.forEach(ex=>{
+    const card = document.createElement('div');
+    card.className = 'exercise';
+
+    const head = document.createElement('div');
+    head.className = 'ex-head';
+    head.innerHTML = '<div class="ex-name">' + escapeHtml(ex.name) + '</div><button class="ex-remove">remove</button>';
+    head.querySelector('.ex-remove').onclick = ()=> removeExercise(key, ex.id);
+    card.appendChild(head);
+
+    const targetRow = document.createElement('div');
+    targetRow.className = 'target-row';
+    targetRow.innerHTML = '<span class="lbl">Target:</span>' +
+      '<input class="sets-input" type="number" inputmode="numeric" placeholder="-" value="' + ex.sets + '">' +
+      '<span class="lbl">sets ×</span>' +
+      '<input class="reps-input" type="text" placeholder="-" value="' + escapeAttr(ex.reps) + '">' +
+      '<span class="lbl">reps</span>';
+    const setsInput = targetRow.querySelector('.sets-input');
+    const repsInput = targetRow.querySelector('.reps-input');
+    setsInput.oninput = (e)=>{ ex.sets = e.target.value; saveConfig(); };
+    repsInput.oninput = (e)=>{ ex.reps = e.target.value; saveConfig(); };
+    card.appendChild(targetRow);
+
+    const maxBox = document.createElement('div');
+    maxBox.className = 'max-box';
+    maxBox.innerHTML = '<span class="lbl">PR</span>' +
+      '<div class="field"><input type="number" inputmode="decimal" placeholder="—" value="' + ex.maxWeight + '"><span class="unit">' + state.unit + '</span></div>' +
+      '<span class="x">×</span>' +
+      '<div class="field"><input type="number" inputmode="numeric" placeholder="—" value="' + ex.maxReps + '"><span class="unit">reps</span></div>';
+    const [mw, mr] = maxBox.querySelectorAll('input');
+    mw.oninput = (e)=>{ ex.maxWeight = e.target.value; saveConfig(); };
+    mr.oninput = (e)=>{ ex.maxReps = e.target.value; saveConfig(); };
+    card.appendChild(maxBox);
+
+    state.draft[ex.id].forEach((set, i)=>{
+      const row = document.createElement('div');
+      row.className = 'set-row';
+      row.innerHTML = '<div class="set-label">' + (i+1) + '</div>' +
+        '<div class="field"><input type="number" inputmode="decimal" placeholder="0" value="' + set.weight + '"><span class="unit">' + state.unit + '</span></div>' +
+        '<div class="field"><input type="number" inputmode="numeric" placeholder="0" value="' + set.reps + '"><span class="unit">reps</span></div>' +
+        '<button class="set-del">✕</button>';
+      const [wI, rI] = row.querySelectorAll('input');
+      wI.oninput = (e)=>{ set.weight = e.target.value; saveDraft(); };
+      rI.oninput = (e)=>{ set.reps = e.target.value; saveDraft(); };
+      row.querySelector('.set-del').onclick = ()=>{
+        state.draft[ex.id].splice(i,1);
+        if(state.draft[ex.id].length === 0) state.draft[ex.id].push({weight:"", reps:""});
+        saveDraft(); render();
+      };
+      card.appendChild(row);
+    });
+
+    const addSet = document.createElement('button');
+    addSet.className = 'add-set';
+    addSet.textContent = '+ add set';
+    addSet.onclick = ()=>{
+      const sets = state.draft[ex.id];
+      const last = sets[sets.length-1];
+      sets.push({weight: last ? last.weight : "", reps: ""});
+      saveDraft(); render();
+    };
+    card.appendChild(addSet);
+
+    main.appendChild(card);
+  });
+
+  const addEx = document.createElement('div');
+  addEx.className = 'add-exercise';
+  addEx.innerHTML = '+ add exercise to ' + escapeHtml(leafLabel()) + '<input placeholder="Exercise name">';
+  const input = addEx.querySelector('input');
+  input.onkeydown = (e)=>{
+    if(e.key === 'Enter' && input.value.trim()){
+      addExercise(key, input.value.trim());
+      input.value = "";
+    }
+  };
+  main.appendChild(addEx);
+
+  document.getElementById('logBtn').textContent = 'Log';
+}
+
+function addExercise(key, name){
+  const ex = { id: uid(), name, ...blankMeta() };
+  state.exercisesByLeaf[key].push(ex);
+  state.draft[ex.id] = [{weight:"", reps:""}];
+  saveConfig(); saveDraft(); render();
+}
+function removeExercise(key, exId){
+  state.exercisesByLeaf[key] = state.exercisesByLeaf[key].filter(e => e.id !== exId);
+  delete state.draft[exId];
+  saveConfig(); saveDraft(); render();
+}
+
+function escapeHtml(s){
+  return String(s).replace(/[&<>"']/g, function(c){
+    if(c === '&') return '&amp;';
+    if(c === '<') return '&lt;';
+    if(c === '>') return '&gt;';
+    if(c === '"') return '&quot;';
+    return '&#39;';
+  });
+}
+function escapeAttr(s){ return escapeHtml(s).replace(/"/g, '&quot;'); }
+
+function render(){
+  document.getElementById('appTitle').textContent = state.appTitle;
+  renderTabs();
+  renderMain();
+}
+
+// ---- settings ----
+function openSettings(){
+  renderSwatches();
+  const customColor = document.getElementById('customColorInput');
+  customColor.value = state.accentColor;
+  customColor.oninput = (e)=>{ state.accentColor = e.target.value; applyTheme(); saveConfig(); renderSwatches(); };
+
+  setUnit(state.unit, false);
+  renderTabBlocks();
+  updateExportCount();
+  document.getElementById('settingsSheet').classList.add('open');
+}
+function renderSwatches(){
+  const wrap = document.getElementById('swatchRow');
+  wrap.innerHTML = "";
+  ACCENT_SWATCHES.forEach(color=>{
+    const b = document.createElement('button');
+    b.className = 'swatch' + (color.toLowerCase() === state.accentColor.toLowerCase() ? ' active' : '');
+    b.style.background = color;
+    b.onclick = ()=>{ state.accentColor = color; applyTheme(); saveConfig(); renderSwatches(); document.getElementById('customColorInput').value = color; };
+    wrap.appendChild(b);
+  });
+}
+function closeSettings(){ document.getElementById('settingsSheet').classList.remove('open'); }
+function setUnit(u, doRender=true){
+  state.unit = u;
+  document.getElementById('unitLb').classList.toggle('active', u==='lb');
+  document.getElementById('unitKg').classList.toggle('active', u==='kg');
+  if(doRender) render();
+}
+
+function updateExportCount(){
+  const history = getHistory();
+  let totalRows = 0;
+  history.forEach(h => totalRows += h.rows.length);
+  document.getElementById('countAll').textContent = totalRows ? (totalRows + ' rows') : 'nothing yet';
+  document.getElementById('exportNote').textContent = downloadsCap
+    ? "Saves a CSV with columns: Date, Tab, Sub-tab, Exercise, Set, Weight, Reps, Unit — import it into Google Sheets or Excel (File → Import / Open)."
+    : "Saving files isn't available in this view — open the app from its own link to export.";
+}
+
+function renderTabBlocks(){
+  const wrap = document.getElementById('tabBlocks');
+  wrap.innerHTML = "";
+  state.tabs.forEach(t=>{
+    const block = document.createElement('div');
+    block.className = 'tab-block';
+    block.innerHTML = '<div class="tab-block-head"><span class="name">' + escapeHtml(t.name) + '</span>' +
+      '<div class="actions"><button class="rename">rename</button><button class="remove">remove</button></div></div>' +
+      '<div class="day-manage" id="sub-' + t.id + '"></div>' +
+      '<div class="add-day-row"><input id="newSub-' + t.id + '" placeholder="Add a sub-tab"><button>Add</button></div>';
+    wrap.appendChild(block);
+
+    block.querySelector('.rename').onclick = ()=>{
+      const val = prompt("Rename tab:", t.name);
+      if(val && val.trim()){ t.name = val.trim(); renderTabBlocks(); }
+    };
+    block.querySelector('.remove').onclick = ()=>{
+      if(state.tabs.length <= 1) return;
+      if(!confirm('Remove "' + t.name + '" and everything in it?')) return;
+      state.tabs = state.tabs.filter(x => x.id !== t.id);
+      if(state.activeTabId === t.id) state.activeTabId = state.tabs[0].id;
+      renderTabBlocks();
+    };
+
+    const subWrap = block.querySelector('#sub-' + t.id);
+    (t.subTabs || []).forEach(s=>{
+      const chip = document.createElement('div');
+      chip.className = 'day-chip';
+      chip.innerHTML = escapeHtml(s.name) + ' <button>✕</button>';
+      chip.querySelector('button').onclick = ()=>{
+        t.subTabs = t.subTabs.filter(x => x.id !== s.id);
+        if(state.activeSubId[t.id] === s.id) state.activeSubId[t.id] = null;
+        renderTabBlocks();
+      };
+      subWrap.appendChild(chip);
+    });
+
+    const newSubInput = block.querySelector('#newSub-' + t.id);
+    const addBtn = block.querySelector('.add-day-row button');
+    const addFn = ()=>{
+      const val = newSubInput.value.trim();
+      if(!val) return;
+      t.subTabs.push({ id: uid(), name: val });
+      newSubInput.value = "";
+      renderTabBlocks();
+    };
+    addBtn.onclick = addFn;
+    newSubInput.onkeydown = (e)=>{ if(e.key === 'Enter') addFn(); };
+  });
+}
+
+function addTabFromSettings(){
+  const input = document.getElementById('newTabInput');
+  const val = input.value.trim();
+  if(!val) return;
+  state.tabs.push({ id: uid(), name: val, subTabs: [] });
+  input.value = "";
+  renderTabBlocks();
+}
+
+async function saveSettings(){
+  saveConfig();
+  closeSettings();
+  render();
+}
+
+// ---- CSV export ----
+function csvEscape(v){
+  const s = String(v === undefined || v === null ? "" : v);
+  return /[",\n]/.test(s) ? '"' + s.replace(/"/g,'""') + '"' : s;
+}
+function toCSV(headers, rows){
+  return [headers.join(','), ...rows.map(r => r.map(csvEscape).join(','))].join('\n');
+}
+async function exportCSV(){
+  if(!downloadsCap){
+    document.getElementById('status').textContent = "Saving files isn't available here — open the app's own link.";
+    document.getElementById('status').className = 'status err';
+    return;
+  }
+  const history = getHistory();
+  if(history.length === 0) return;
+  const headers = ['Date','Tab','Sub-tab','Exercise','Set','Weight','Reps','Unit'];
+  const rows = [];
+  history.forEach(h => h.rows.forEach(r => rows.push([r.date, r.tab, r.subTab || '', r.exercise, r.setNumber, r.weight, r.reps, r.unit])));
+  try{ await downloadsCap.save({ filename: 'LiftLog.csv', data: toCSV(headers, rows) }); }catch(e){}
+}
+
+// ---- submit ----
+async function submitCurrent(){
+  const statusEl = document.getElementById('status');
+  const key = leafKey();
+  const exList = state.exercisesByLeaf[key] || [];
+  const dateStr = new Date().toISOString().slice(0,10);
+  const t = activeTab();
+  const sub = activeSubId();
+  const subName = sub ? (t.subTabs.find(s=>s.id===sub) || {}).name : null;
+
+  const rows = [];
+  exList.forEach(ex=>{
+    (state.draft[ex.id] || []).forEach((set, i)=>{
+      if(set.weight !== "" && set.reps !== ""){
+        rows.push({ date: dateStr, tab: t.name, subTab: subName, exercise: ex.name, setNumber: i+1, weight: set.weight, reps: set.reps, unit: state.unit });
+        const w = parseFloat(set.weight);
+        const currentPr = parseFloat(ex.maxWeight);
+        if(!isNaN(w) && (isNaN(currentPr) || w > currentPr)){ ex.maxWeight = set.weight; ex.maxReps = set.reps; }
+      }
+    });
+  });
+
+  if(rows.length === 0){
+    statusEl.textContent = "Enter at least one set before logging.";
+    statusEl.className = 'status err';
+    return;
+  }
+
+  saveConfig();
+  appendHistory({ date: dateStr, rows });
+  statusEl.textContent = "Saved " + rows.length + " set" + (rows.length>1?'s':'') + " on this device. Export from ⚙ anytime.";
+  statusEl.className = 'status ok';
+
+  exList.forEach(ex=>{ state.draft[ex.id] = [{weight:"", reps:""}]; });
+  saveDraft();
+  render();
+}
+
+// ---- boot ----
+(async function init(){
+  loadState();
+  applyTheme();
+  render();
+  try{
+    if(window.claude && window.claude.use){ downloadsCap = await window.claude.use('downloads'); }
+  }catch(e){ downloadsCap = null; }
+})();
+</script>
+</body>
+</html>
